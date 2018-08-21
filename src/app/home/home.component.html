@@ -1,3 +1,16 @@
-<p>
-  home works!
-</p>
+<div class="container-fluid">
+    <div class="header">All Blog</div>
+
+    <div class="row">
+        <div *ngFor="let blog of allBlog" class="col-md-4">
+            <div class="card card-primary">
+                <div class="card-header">Title: {{blog.blogTitle | uppercase}}</div>
+                <div class="card-block">{{blog.blogDescription}}</div>
+                <div class="card-footer"> 
+                    {{blog.footer | date}} <a [routerLink]="['/blog',blog.blogId]" class = "btn btn-primary">Read</a> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
