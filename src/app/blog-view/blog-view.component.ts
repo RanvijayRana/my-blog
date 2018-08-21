@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {ActivatedRoute, Router} from '@angular/router';
+import { BlogService } from '../blog.service';
 
 @Component({
   selector: 'app-blog-view',
@@ -11,40 +12,15 @@ export class BlogViewComponent implements OnInit {
 
   public currentBlog;
   
-  public allBlog = [
-    {
-      "blogId": 1,
-      "blogTitle": "This is blog 1",
-      "blogDescription": "This is description",
-      "footer": "1 aug 2018"
-    },
-    {
-      "blogId": 2,
-      "blogTitle": "This is blog 2",
-      "blogDescription": "This is description 222",
-      "footer": "2 aug 2018"
-    },
-    {
-      "blogId": 3,
-      "blogTitle": "This is blog 3",
-      "blogDescription": "This is description 333",
-      "footer": "3 aug 2018"
-    }
-  ]
+  
 
-  constructor(private _route: ActivatedRoute, private router: Router) { }
+  constructor(private _route: ActivatedRoute, private router: Router, public blogService: BlogService) { }
 
   ngOnInit() {
     let myBlogId = this._route.snapshot.paramMap.get('blogId');
    
-    this.getSingleBlogDetail(myBlogId);    
+    this.currentBlog = this.blogService.getSingleBlogDetail(myBlogId);    
   }
 
-  public getSingleBlogDetail(currentBlogId): any{
-    for(let blog of this.allBlog){
-      if(blog.blogId == currentBlogId){
-        this.currentBlog = blog;
-      }
-    }
-  }
+  
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { BlogService} from './blog.service'
 import { RouterModule,Routes} from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -28,7 +29,7 @@ import { BlogEditComponent } from './blog-edit/blog-edit.component';
       {path:'edit/:blogId',component:BlogEditComponent}
     ]) 
   ],
-  providers: [],
+  providers: [BlogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
