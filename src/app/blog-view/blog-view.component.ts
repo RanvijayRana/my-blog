@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {ActivatedRoute, Router} from '@angular/router';
 import { BlogService } from '../blog.service';
+import { BlogHttpService } from '../blog-http.service';
 
 @Component({
   selector: 'app-blog-view',
@@ -11,15 +12,35 @@ import { BlogService } from '../blog.service';
 export class BlogViewComponent implements OnInit {
 
   public currentBlog;
-  
-  
 
-  constructor(private _route: ActivatedRoute, private router: Router, public blogService: BlogService) { }
+  constructor(private _route: ActivatedRoute, private router: Router, public blogService: BlogService, public blogHttpService: BlogHttpService) { }
 
   ngOnInit() {
     let myBlogId = this._route.snapshot.paramMap.get('blogId');
    
-    this.currentBlog = this.blogService.getSingleBlogDetail(myBlogId);    
+    //this.currentBlog = this.blogService.getSingleBlogDetail(myBlogId); 
+    this.blogHttpService.getSingleBlogInformation(myBlogId).subscribe(
+      data =>{
+        console.log("logging data");
+        console.log(data);
+        this.currentBlog = data["data"];
+      },
+      error =>{
+        console.log("some error occured");
+        console.log(error.errorMessage);
+      }
+    )
+   /* this.blogHttpService.getSingleBlogInformation(myBlogId).subscribe({
+      data =>{
+        console.log("logging data");
+        console.log(data);
+        this.currentBlog= data["data"];
+      },
+      error =>{
+        console.log("some error occured");
+        console.log(error.errorMessage);
+      }
+    }) */   
   }
 
   

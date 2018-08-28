@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {HttpClientModule} from '@angular/common/http';
+
 import { BlogService} from './blog.service'
+import { BlogHttpService } from './blog-http.service';
 import { RouterModule,Routes} from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -19,6 +22,8 @@ import { BlogEditComponent } from './blog-edit/blog-edit.component';
     BlogEditComponent
   ],
   imports: [
+    //http-client module
+    HttpClientModule,
     BrowserModule,
     //router module forRoot
     RouterModule.forRoot([
@@ -29,7 +34,7 @@ import { BlogEditComponent } from './blog-edit/blog-edit.component';
       {path:'edit/:blogId',component:BlogEditComponent}
     ]) 
   ],
-  providers: [BlogService],
+  providers: [BlogService,BlogHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
