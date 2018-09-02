@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 
 import { BlogService} from './blog.service'
@@ -25,6 +26,7 @@ import { BlogEditComponent } from './blog-edit/blog-edit.component';
     //http-client module
     HttpClientModule,
     BrowserModule,
+    FormsModule,
     //router module forRoot
     RouterModule.forRoot([
       {path:'home',component:HomeComponent},

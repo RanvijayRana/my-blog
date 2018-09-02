@@ -30,17 +30,6 @@ export class BlogViewComponent implements OnInit {
         console.log(error.errorMessage);
       }
     )
-   /* this.blogHttpService.getSingleBlogInformation(myBlogId).subscribe({
-      data =>{
-        console.log("logging data");
-        console.log(data);
-        this.currentBlog= data["data"];
-      },
-      error =>{
-        console.log("some error occured");
-        console.log(error.errorMessage);
-      }
-    }) */   
   }
 
   

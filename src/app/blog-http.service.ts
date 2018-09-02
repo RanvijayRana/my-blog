@@ -29,4 +29,10 @@ export class BlogHttpService {
     console.log(myResponse);
     return myResponse;
   }
+
+  public creatBlog(blogData): any{
+    let myResponse = this._http.post(this.baseUrl+'/create/?authToken='+this.authToken, blogData);  
+    console.log(myResponse);
+    return myResponse;
+  }
 }
